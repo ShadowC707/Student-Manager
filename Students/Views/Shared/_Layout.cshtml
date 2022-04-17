@@ -1,0 +1,157 @@
+﻿@inject IViewLocalizer Localizer 
+
+
+<!doctype html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;900&display=swap" rel="stylesheet">
+    <style>
+
+        #header, #main, #footer {
+            background-color: #ECFDF1;
+            font-family: sans-serif;
+            font-weight: 600;
+        }
+
+        body{
+            min-height:95vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #header {
+            height: 75px;
+            border-style: solid;
+            border-width: 0px 0px 2px 0px;
+            border-color: #98D7C2;
+        }
+
+        .navbutton {
+            background-color: #29A0B1;
+            appearance: button;
+            width: 80px;
+            height: 35px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 7px #29A0B1;
+            margin: 2px;
+            border: 2px solid #29A0B1;
+        }
+
+        .navbutton:hover {
+            background-color: #3c8aab;
+            border: 2px solid #32738f;
+        }
+
+        .navbutton > p {
+            text-align: center;
+            margin: auto;
+            margin-top: 10%;
+            color: white;
+        }
+
+        #wrapper {
+            padding: 10px;
+        }
+
+        #wrapper a + a {
+            margin-left: 10px;
+        }
+
+
+        #main {
+            height: auto;
+            padding: 15px;
+        }
+
+
+        #footer {
+            height: 125px;
+            width:auto;
+            position: sticky;
+            top:100%;
+
+        }
+
+
+
+        #dev {
+            height: 75px;
+            background-color: #5584AC;
+            padding: 15px;
+            position: relative;
+            box-shadow: 0px -4px 5px #98D7C2;
+            text-align: center;
+        }
+
+        #dev p {
+            color: white;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        #copyright {
+            height: 50px;
+            background-color: #22577E;
+            position: relative;
+        }
+
+        #copyright > p {
+            display: inline;
+            margin: 15px;
+            position: absolute;
+            color: white;
+        }
+
+        #copyright > div {
+            position: absolute;
+            right: 3%;
+            margin: 15px;
+        }
+
+        #copyright > div > a > p {
+            color: white;
+            display: inline;
+        }
+
+        #copyright > div > a + a {
+            border-width: 0px 0px 0px 2px;
+            border-style: none none none solid;
+            border-color: #32738f;
+            padding: 0px 4px 0px 5px;
+        }
+
+    </style>
+</head>
+<body style="background-color: #ECFDF1;">
+    <header id="header">
+        <div id="wrapper">
+            <a class="navbutton" asp-controller="Student" asp-action="Add"><p>@Localizer["AddButton"]</p></a>
+            <a class="navbutton" asp-controller="Student" asp-action="GetStudents"><p>@Localizer["AllButton"]</p></a>
+        </div>
+    </header>
+    <div id="main">
+        @RenderBody()
+    </div>
+    <footer id="footer">
+        <div id="dev">
+            <p>@Localizer["MadeBy"]</p><br>
+            <p>@Localizer["ContactMe"]</p>
+            <div>
+                <a href="https://www.instagram.com/oleksadovbush228/"><p>Instagram</p></a>
+            </div>
+        </div>
+        <div id="copyright">
+            <p>@Localizer["AllRights"]</p>
+            <div>
+                <a asp-controller="Student" asp-action="Index"><p>Home</p></a>
+                <a asp-controller="Home" asp-action="About"><p>About</p></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

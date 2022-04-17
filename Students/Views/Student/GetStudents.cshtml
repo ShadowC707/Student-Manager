@@ -1,0 +1,99 @@
+﻿@model List<Student>
+@inject IViewLocalizer Localizer
+
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<html>
+<head>
+    <style>
+        table {
+            border: 2px solid #256A87;
+            border-collapse: separate;
+            background-color: #EBF8FB;
+        }
+
+        tr {
+            background: #6AACC3;
+        }
+
+        tr, td {
+            border: 2px solid #256A87;
+            color: white;
+            padding: 3px;
+            font-family: 'Source Sans Pro',sans-serif;
+        }
+
+        td > a {
+            margin: auto;
+        }
+
+        tbody > tr > td:nth-last-child(1), tbody > tr > td:nth-last-child(2) {
+            background: #EBF8FB;
+            border-style: none;
+        }
+
+        .denyButton {
+            appearance: button;
+            width: 80px;
+            height: 35px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 7px #770000;
+            margin: 2px;
+            border: 2px solid;
+            background-color: #de2a2a;
+            border-color: #D22323;
+        }
+
+        .denyButton > p {
+            margin: auto;
+            text-align: center;
+            margin-top: 10%;
+            font-family: sans-serif;
+            font-weight: 600;
+            text-decoration:none;
+            color:white;
+        }
+
+        .denyButton:hover {
+            background-color: #b01e1e;
+            border: 2px solid #b01e1e;
+        }
+
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>@Localizer["Id"]</td>
+                <td>@Localizer["FirstName"]</td>
+                <td>@Localizer["LastName"]</td>
+                <td>@Localizer["Patronymic"]</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td><p>@item.Id</p></td>
+                        <td><p>@item.FirstName</p></td>
+                        <td><p>@item.LastName</p></td>
+                        <td><p>@item.Patronymic</p></td>
+                        <td><a class="navbutton" asp-controller="Student" asp-action="GetStudent" asp-route-id="@item.Id"><p>@Localizer["GetInfo"]</p></a></td>
+                        <td><a class="denyButton" asp-controller="Student" asp-action="Delete" asp-route-id="@item.Id"><p>@Localizer["Delete"]</p></a></td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+
+        <tr>
+    </table>
+</body>
+</html>
+

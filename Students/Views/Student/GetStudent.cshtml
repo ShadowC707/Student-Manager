@@ -1,0 +1,63 @@
+﻿@model Student
+@inject IViewLocalizer Localizer 
+
+
+@{
+    ViewData["Title"] = "Student";
+}
+<html>
+<head>
+    <style>
+
+        #data {
+            border: 4px solid #3c8aab;
+            color: white;
+            background: #29A0B1;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+            height: auto;
+        }
+
+        ol {
+            list-style-type: none;
+        }
+
+
+        li {
+            counter-increment: step-counter;
+            margin: 15px;
+            position: relative;
+            margin-left: auto;
+            padding-left: 35px;
+        }
+
+        li::before {
+            content: counter(step-counter);
+            margin-right: 5px;
+            font-size: 80%;
+            background-color: #6AACC3;
+            color: white;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 3px;
+            position: absolute;
+            left: -5px;
+        }
+
+        li:first-child {
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="data">
+        <ol>
+            <li>@Localizer["Name"] - @Model.FirstName @Model.LastName @Model.Patronymic</li>
+            <li>@Localizer["Age"] -  @Model.Age</li>
+            <li>@Localizer["MothersName"] - @Model.Mother.FirstName @Model.Mother.LastName</li>
+            <li>@Localizer["FathersName"] - @Model.Father.FirstName @Model.Father.LastName</li>
+            <li>@Localizer["Address"] - @Model.Address</li>
+        </ol>
+    </div>
+</body>
+</html>

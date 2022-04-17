@@ -1,0 +1,100 @@
+﻿@model StudentViewModel
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<html>
+<head>
+    <style>
+        form {
+            background-color: #b4dcfa;
+            border: 4px solid #95c7ed;
+            padding: 5px;
+        }
+
+            form div {
+                margin: 10px;
+            }
+
+        label {
+            color: white;
+        }
+
+        input[type=submit] {
+            margin: 10px;
+            width: 75px;
+            height: 35px;
+            color: white;
+            font-family: sans-serif;
+            font-weight: 600;
+            background: #5584AC;
+            border: 2px solid #5584AC;
+            border-radius: 5px;
+        }
+
+            input[type=submit]:hover {
+                background-color: #2c71a3;
+                border: 2px solid #1d5985;
+                border-radius: 5px;
+            }
+
+        input[type=text], input[type=number] {
+            background-color: #8fc3eb;
+            border: 2px solid #3c8aab;
+            border-style: none none solid dashed;
+            border-radius: 5px 0px 5px 0px;
+            width: 175px;
+            height: 30px;
+            margin: 5px 0px 5px 0px;
+            padding-left: 15px;
+            color: white;
+        }
+
+            input[type=text]::placeholder, input[type=number]::placeholder {
+                color: white;
+            }
+
+            input[type=text]:focus, input[type=number]:focus {
+                background: #7bb1db;
+                border-style: none;
+                outline: none;
+                color: white;
+                border: 2px solid #2c7594;
+                border-style: none none solid dashed;
+            }
+    </style>
+</head>
+<body>
+
+    <form asp-controller="Student" asp-action="Add">
+        <div>
+            <div>
+                <label asp-for="FullName">@Localizer["Name"]</label><br>
+                <input asp-for="FullName" type="text" placeholder="@Localizer["Name"]" />
+            </div>
+            <div>
+                <label asp-for="Age">@Localizer["Age"]</label><br>
+                <input asp-for="Age" type="number" min="6" max="16" placeholder="@Localizer["Age"]" />
+            </div>
+            <div>
+                <label asp-for="MothersFullName">@Localizer["MothersName"]</label><br>
+                <input asp-for="MothersFullName" type="text" placeholder="@Localizer["MothersName"]" />
+            </div>
+            <div>
+                <label asp-for="FathersFullName">@Localizer[""]</label><br>
+                <input asp-for="FathersFullName" type="text" placeholder="@Localizer["FathersName"]" />
+            </div>
+
+            <div>
+                <label asp-for="Address">@Localizer["Adddress"]</label><br>
+                <input asp-for="Address" type="text" placeholder="@Localizer["Address"]" />
+            </div>
+            <input type="submit" value="@Localizer["Submit"]" />
+
+        </div>
+    </form>
+</body>
+</html>
+

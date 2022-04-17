@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Error Occured!";
+}
+
+
+<!doctype html>
+<html>
+<head>
+    <style>
+        p, a > p {
+            font-family: sans-serif;
+            font-weight: 600;
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #main > div {
+            background-color: #c3423f;
+            padding: 20px;
+            border: 5px solid #a62e2b;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>@ViewBag.ExceptionName occured :c</p><br />
+        <p>@ViewBag.Path doesn't work for now and we are working to fix it!</p><br />
+        <a asp-controller="Student" asp-action="Index"><p>Return to Home?</p></a>
+    </div>
+</body>
+</html>
